@@ -4,6 +4,7 @@ import vue from "@vitejs/plugin-vue";
 import vueJsx from "@vitejs/plugin-vue-jsx";
 import pluginVue from "esbuild-plugin-vue-next";
 import { writeFileSync } from "fs";
+import path from "path";
 import { defineConfig, loadEnv } from "vite";
 
 export default defineConfig(async ({ command, mode }) => {
@@ -39,5 +40,10 @@ export default defineConfig(async ({ command, mode }) => {
       vue(),
       vueJsx(),
     ],
+    resolve: {
+      alias: {
+        "@": path.resolve(__dirname, "src"),
+      },
+    },
   };
 });
